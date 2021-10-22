@@ -26,18 +26,17 @@ $(document).ready(function () {
 });
 
 function loadCountryData() {
-  var element = document.querySelector('.background-content');
+  var element = document.querySelector('.frame');
 
   // And pass it to panzoom
-  panzoom(element, {
-    filterKey: function(/* e, dx, dy, dz */) {
-      // don't let panzoom handle this event:
-      return true;
-    }
+  var instance = panzoom(element, {
+    transformOrigin: {x: 0.5, y: 0.5}
   });
 
+  instance.smoothZoom(0, 0, 1);
+
   $(".flag-wrap").remove();
-  $(".background-content").append(renderCountryTemplate());
+  $(".frame").append(renderCountryTemplate());
 }
 
 function renderCountryTemplate() {

@@ -29,7 +29,7 @@
   url(https://assets.digitalocean.com/labs/doicons/general-purpose-droplet.svg?cb=1), move; */
 }
 
-.background-content .item {
+.tag {
   margin: 20px;
   position: absolute;
   display: inline-block;
@@ -37,16 +37,16 @@
   width: 155px;
 }
 
-.background-content .item .title:hover {
+.tag .title:hover {
   box-shadow: 0px 6px 8px 0px #3e3e3e80;
 }
 
-.background-content .item .title:active {
+.tag .title:active {
   color: #fdf9ef;
   background: #004b98;
 }
 
-.background-content .item .title {
+.tag .title {
   font-family: sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -58,7 +58,7 @@
   border-radius: 8px 8px 0px 0px;
 }
 
-.background-content .item .wrap-list-flag {
+.tag .wrap-list-flag {
   padding: 16px;
   background: #fdf9ef;
   border: 1px solid #004b98;
@@ -72,7 +72,7 @@
   outline: none;
 }
 
-.background-content .item .wrap-flag {
+.tag .wrap-flag {
   width: 60px;
   height: 45px;
   padding: 10px;
@@ -80,15 +80,21 @@
   position: relative;
 }
 
-.background-content .item .wrap-flag:hover {
+.flag {
+  width: 1.2%;
+  height: 1.3%;
+  position: absolute;
+}
+
+.tag .wrap-flag:hover {
   background: #dadada;
 }
 
-.background-content .item .wrap-flag:hover .flag {
+.tag .wrap-flag:hover .flag {
   box-shadow: 0px 6px 8px 0px #3e3e3e80;
 }
 
-.background-content .item .wrap-flag .flag {
+.tag .wrap-flag .flag {
   width: 100%;
   height: 100%;
   background-size: 100%;
@@ -129,4 +135,17 @@
   white-space: nowrap;
   line-height: 150%;
   text-decoration: blink;
+}
+
+.wrap-tag {
+  position: absolute;
+  line-height: 1;
+  font-size: 8px;
+  width: 8%;
+  height: 4%;
+}
+
+.wrap-tag .title {
+  height: 100%;
+  background: url(./assets/images/tag_font.svg) no-repeat center;
 }

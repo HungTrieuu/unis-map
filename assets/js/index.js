@@ -12,7 +12,7 @@ $(document).ready(function () {
     loadCountryData();
   });
 
-  $(".background-content .item .title").on("click", function (event) {
+  $(".wrap-tag .title").on("click", function (event) {
     handleClickTitle(this);
   });
 
@@ -40,9 +40,9 @@ function loadCountryData() {
 }
 
 function renderCountryTemplate() {
-  var flagTemplate = `<div class="flag" style="width: 21px;height: 21px;position: absolute;top: {3}%;left: {4}%;">
+  var flagTemplate = `<div class="flag" title="{1}" style="top: {3}%;left: {4}%;">
                         <a title-flag="{1}" link-doc="{2}" href="{2}" target="_blank" style="height: 100%;display: block;">
-                          <div class="flag" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; 
+                          <div class="" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; 
                                                     background-size: 100%;width: 100%;
                                                     height: 100%;">
                           </div>
@@ -54,13 +54,15 @@ function renderCountryTemplate() {
   for (const zone of dataCountry) {
     if (zone.Countries) {
       for (const country of zone.Countries) {
-        flagHTML += flagTemplate.format(
-          country.ImageName,
-          country.ToolTip,
-          country.LinkDoc,
-          country.Position ? country.Position.Top : 0,
-          country.Position ? country.Position.Left : 0
-        );
+        if (country.Position) {
+          flagHTML += flagTemplate.format(
+            country.ImageName,
+            country.ToolTip,
+            country.LinkDoc,
+            country.Position ? country.Position.Top : 0,
+            country.Position ? country.Position.Left : 0
+          );
+        }
       }
     }
   }
@@ -101,6 +103,7 @@ function handleHoverFlag(_this) {
 
 // Xử lý blur danh sách cờ
 function handleBlurFlags(_this) {
+  return;
   // Nếu click vào tên vùng => không xử lý blur
   if ($(_this).siblings(".title").is(":hover")) {
     return;
@@ -135,8 +138,8 @@ function handleClickTitle(_this) {
 // Template danh sách cờ
 function listFlagTemplate(regionName) {
   var flagTemplate = `<a class="wrap-flag" title-flag="{1}" link-doc='{2}' href="{2}" target="_blank">
-                        <div class="flag" style="background: url('./assets/images/Flag/{0}.png') no-repeat center; background-size: 100%;">
-                        </div>
+                        <span class="flag" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; background-size: 100%;">
+                        </span>
                       </a>`;
   var flagHTML = "";
 
@@ -155,7 +158,7 @@ function listFlagTemplate(regionName) {
             {0}
           </div>`.format(
     flagHTML,
-    countries.FlexType ? countries.FlexType : "row"
+    countries?.FlexType ? countries?.FlexType : "row"
   );
 }
 

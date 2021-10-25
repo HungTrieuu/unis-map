@@ -120,24 +120,24 @@ function handleBlurFlags(_this) {
 
 // Xử lý click tên vùng
 function handleClickTitle(_this) {
-  if ($(_this).siblings(".wrap-list-flag").length > 0) {
-    $(".title-region-active").removeClass("title-region-active");
-    $(".wrap-list-flag").remove();
+  if ($(_this).siblings(".list-flag").length > 0) {
+    // $(".title-region-active").removeClass("title-region-active");
+    $(".list-flag").remove();
     return;
   }
 
-  $(".title-region-active").removeClass("title-region-active");
-  $(".wrap-list-flag").remove();
-  $(_this).addClass("title-region-active");
+  // $(".title-region-active").removeClass("title-region-active");
+  $(".list-flag").remove();
+  // $(_this).addClass("title-region-active");
   $(_this)
     .parent()
     .append(listFlagTemplate($(_this).attr("title-name")));
-  $(".wrap-list-flag").focus();
+  // $(".wrap-list-flag").focus();
 }
 
 // Template danh sách cờ
 function listFlagTemplate(regionName) {
-  var flagTemplate = `<a class="wrap-flag" title-flag="{1}" link-doc='{2}' href="{2}" target="_blank">
+  var flagTemplate = `<a class="flag-link" title-flag="{1}" link-doc='{2}' href="{2}" target="_blank">
                         <span class="flag" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; background-size: 100%;">
                         </span>
                       </a>`;
@@ -154,7 +154,7 @@ function listFlagTemplate(regionName) {
     });
   }
 
-  return `<div class="wrap-list-flag" style="flex-direction: {1}" tabindex="1">
+  return `<div class="list-flag" style="flex-direction: {1}" tabindex="1">
             {0}
           </div>`.format(
     flagHTML,

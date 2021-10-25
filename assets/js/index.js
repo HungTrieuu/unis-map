@@ -28,9 +28,8 @@ $(document).ready(function () {
 function loadCountryData() {
   var element = document.querySelector('.frame');
 
-  // And pass it to panzoom
-  var instance = panzoom(element, {
-    transformOrigin: {x: 0.5, y: 0.5}
+  var instance= panzoom(element, {
+    zoomDoubleClickSpeed: 1
   });
 
   instance.smoothZoom(0, 0, 1);
@@ -103,19 +102,12 @@ function handleHoverFlag(_this) {
 
 // Xử lý blur danh sách cờ
 function handleBlurFlags(_this) {
-  return;
   // Nếu click vào tên vùng => không xử lý blur
-  if ($(_this).siblings(".title").is(":hover")) {
+  if ($(_this).siblings(".list-flag .title").is(":hover")) {
     return;
   }
 
-  // Xoá danh sách country
-  $(".wrap-list-flag")
-    .not(":hover")
-    .siblings(".title-region-active")
-    .removeClass("title-region-active");
-
-  $(".wrap-list-flag").not(":hover").remove();
+  $(".list-flag").not(":hover").remove();
 }
 
 // Xử lý click tên vùng
@@ -147,7 +139,7 @@ function listFlagTemplate(regionName) {
   if (countries) {
     countries.Countries.forEach((country) => {
       flagHTML += flagTemplate.format(
-        country.ImageName,
+        String(country.ImageName).toLowerCase(),
         country.ToolTip,
         country.LinkDoc
       );

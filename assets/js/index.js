@@ -55,7 +55,7 @@ function renderCountryTemplate() {
       for (const country of zone.Countries) {
         if (country.Position) {
           flagHTML += flagTemplate.format(
-            country.ImageName,
+            String(country.ImageName).toLowerCase(),
             country.ToolTip,
             country.LinkDoc,
             country.Position ? country.Position.Top : 0,

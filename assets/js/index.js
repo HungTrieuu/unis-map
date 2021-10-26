@@ -16,20 +16,43 @@ $(document).ready(function () {
     handleClickTitle(this);
   });
 
-  $("body").on("hover", ".wrap-flag", function () {
-    handleHoverFlag(this);
-  });
+  // $("body").on("hover", ".flag", function () {
+  //   handleHoverFlag(this);
+  // });
 
-  $("body").on("blur", ".wrap-list-flag", function (e) {
-    handleBlurFlags(this);
-  });
+  // $("body").on("blur", ".wrap-list-flag", function (e) {
+  //   handleBlurFlags(this);
+  // });
+
+  $("body")
+    .on("mouseenter", ".flag", function (event) {
+      if ($(".popup-title").length > 0) {
+        $(".popup-title").remove();
+      }
+      $(this).append(templateTooltip(this));
+
+      var $tooltipBox = $(this).find(".popup-title");
+      if ($tooltipBox.length == 0) {
+        return;
+      }
+      $tooltipBox.css({
+        // top: `-${$tooltipBox.outerHeight() - 200}%`,
+        left: `-${$tooltipBox.outerWidth() / 2 - 30}%`,
+      });
+    })
+    .on("mouseleave", ".flag", function (event) {
+      if ($(".popup-title").is(":hover")) {
+        return;
+      }
+      $(".popup-title").remove();
+    });
 });
 
 function loadCountryData() {
-  var element = document.querySelector('.frame');
+  var element = document.querySelector(".frame");
 
-  var instance= panzoom(element, {
-    zoomDoubleClickSpeed: 1
+  var instance = panzoom(element, {
+    zoomDoubleClickSpeed: 1,
   });
 
   instance.smoothZoom(0, 0, 1);
@@ -163,4 +186,13 @@ function toolTipTemplate(_this) {
     $(_this).attr("title-flag"),
     $(_this).attr("link-doc")
   );
+}
+
+function templateTooltip(_this) {
+  return `<span class="popup-title">
+            ${$(_this).attr("title")}
+            <a href="${$(_this)
+              .find("a")
+              .attr("link-doc")}" target="_blank">(Click to learn more)</a>
+          </span>`;
 }

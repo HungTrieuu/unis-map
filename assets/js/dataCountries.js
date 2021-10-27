@@ -241,6 +241,12 @@ var dataCountry = [
     RegionName: "Caribbean",
     Countries: [
       {
+        ImageName: "Antigua and Barbuda",
+        ToolTip: "Antigua and Barbuda",
+        LinkDoc:
+          "https://docs.google.com/document/d/1pT2dgFvSxyoczD7aMWezTZxNlT-HtLB6pBKgnG90By4/edit",
+      },
+      {
         ImageName: "Bahamas",
         ToolTip: "Bahamas",
         LinkDoc:
@@ -952,7 +958,7 @@ var dataCountry = [
         ImageName: "Equatorial Guinea",
         ToolTip: "Equatorial Guinea",
         LinkDoc:
-          "https://docs.google.com/document/d/1myUc8GWspLGd0ELeVF3wi4Meo90lmA1Bb8kEiz_yD3c/edit",
+          "https://docs.google.com/document/d/1JARkesDzeeBAYapKHZpt-qVk9BZHOg9qq0U8kYiHAVc/edit",
         Position: {
           Top: 60.1,
           Left: 14,
@@ -1176,8 +1182,8 @@ var dataCountry = [
         },
       },
       {
-        ImageName: "mauritious",
-        ToolTip: "Mauritious",
+        ImageName: "Mauritious",
+        ToolTip: "Mauritius",
         LinkDoc:
           "https://docs.google.com/document/d/1Ict__F5TDhjFrObCR18DDj5kZooqV-lfd0hmm11cIVE/edit",
         Position: {
@@ -1214,8 +1220,8 @@ var dataCountry = [
       },
       {
         ImageName: "swaziland",
-        ToolTip: "Swaziland",
-        LinkDoc: "",
+        ToolTip: "Eswatini",
+        LinkDoc: "https://docs.google.com/document/d/1mVxDjln2H9LJQQrWi5R1o4N9ROnvb1QJVYGtNOTty7s/edit",
         Position: {
           Top: 72.6,
           Left: 19.5,
@@ -1225,7 +1231,7 @@ var dataCountry = [
         ImageName: "lesotho",
         ToolTip: "Lesotho",
         LinkDoc:
-          "https://docs.google.com/document/d/1mVxDjln2H9LJQQrWi5R1o4N9ROnvb1QJVYGtNOTty7s/edit",
+          "https://docs.google.com/document/d/1X3ize6b3NwvZeZPxdmCk0keFNsocYEG7fUilw46Vr3M/edit",
         Position: {
           Top: 73.3,
           Left: 18.2,
@@ -1582,12 +1588,6 @@ var dataCountry = [
         },
       },
       {
-        ImageName: "Antigua and Barbuda",
-        ToolTip: "Antigua and Barbuda",
-        LinkDoc:
-          "https://docs.google.com/document/d/1pT2dgFvSxyoczD7aMWezTZxNlT-HtLB6pBKgnG90By4/edit",
-      },
-      {
         ImageName: "Maldives",
         ToolTip: "Maldives",
         LinkDoc:
@@ -1617,6 +1617,9 @@ var dataCountry = [
           Top: 48.5,
           Left: 32.5,
         },
+        Size: {
+          Height: 2.5
+        }
       },
       {
         ImageName: "Bhutan",

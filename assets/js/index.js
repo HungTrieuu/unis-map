@@ -25,11 +25,11 @@ $(document).ready(function () {
   // });
 
   $("body")
-    .on("mouseenter", ".flag", function (event) {
+    .on("mouseenter", ".tooltip-flag", function (event) {
       if ($(".popup-title").length > 0) {
         $(".popup-title").remove();
       }
-      $(this).append(templateTooltip(this));
+      $(this).append(templateTooltip($(this).find(".inner")));
 
       var $tooltipBox = $(this).find(".popup-title");
       if ($tooltipBox.length == 0) {
@@ -40,7 +40,7 @@ $(document).ready(function () {
         left: `-${$tooltipBox.outerWidth() / 2 - 30}%`,
       });
     })
-    .on("mouseleave", ".flag", function (event) {
+    .on("mouseleave", ".tooltip-flag", function (event) {
       if ($(".popup-title").is(":hover")) {
         return;
       }
@@ -53,6 +53,8 @@ function loadCountryData() {
 
   var instance = panzoom(element, {
     zoomDoubleClickSpeed: 1,
+    // maxZoom: 1,
+    minZoom: 1
   });
 
   instance.smoothZoom(0, 0, 1);
@@ -62,8 +64,8 @@ function loadCountryData() {
 }
 
 function renderCountryTemplate() {
-  var flagTemplate = `<div class="flag" title="{1}" style="top: {3}%;left: {4}%;">
-                        <a title-flag="{1}" link-doc="{2}" href="{2}" target="_blank" style="height: 100%;display: block;">
+  var flagTemplate = `<div class="flag tooltip-flag" style="top: {3}%;left: {4}%; width: {5}%; height: {6}%">
+                        <a class="inner" title-flag="{1}" link-doc="{2}" href="{2}" target="_blank" style="height: 100%;display: block;">
                           <div class="" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; 
                                                     background-size: 100%;width: 100%;
                                                     height: 100%;">
@@ -76,13 +78,25 @@ function renderCountryTemplate() {
   for (const zone of dataCountry) {
     if (zone.Countries) {
       for (const country of zone.Countries) {
+        var width = 1.2;
+        var height = 1.5;
+        if (country.Size) {
+          if (country.Size.Width) {
+            width = country.Size.Width;
+          }
+          if (country.Size.Height) {
+            height = country.Size.Height;
+          }
+        }
         if (country.Position) {
           flagHTML += flagTemplate.format(
             String(country.ImageName).toLowerCase(),
             country.ToolTip,
             country.LinkDoc,
             country.Position ? country.Position.Top : 0,
-            country.Position ? country.Position.Left : 0
+            country.Position ? country.Position.Left : 0,
+            width,
+            height
           );
         }
       }
@@ -152,8 +166,8 @@ function handleClickTitle(_this) {
 
 // Template danh sách cờ
 function listFlagTemplate(regionName) {
-  var flagTemplate = `<a class="flag-link" title-flag="{1}" link-doc='{2}' href="{2}" target="_blank">
-                        <span class="flag" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; background-size: 100%;">
+  var flagTemplate = `<a class="flag-link tooltip-flag" link-doc='{2}' href="{2}" target="_blank">
+                        <span class="flag inner" title-flag="{1}" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; background-size: 100%;">
                         </span>
                       </a>`;
   var flagHTML = "";
@@ -188,11 +202,11 @@ function toolTipTemplate(_this) {
   );
 }
 
-function templateTooltip(_this) {
+function templateTooltip($this) {
   return `<span class="popup-title">
-            ${$(_this).attr("title")}
-            <a href="${$(_this)
-              .find("a")
-              .attr("link-doc")}" target="_blank">(Click to learn more)</a>
+            ${$this.attr("title-flag")}
+            <a href="${$this.attr(
+              "link-doc"
+            )}" target="_blank">(Click to learn more)</a>
           </span>`;
 }

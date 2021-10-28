@@ -403,6 +403,9 @@ var dataCountry = [
           Top: 39.9,
           Left: 13.8,
         },
+        Size: {
+          Width: 0.9
+        }
       },
       {
         ImageName: "Liechtenstein",

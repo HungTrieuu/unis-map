@@ -66,7 +66,7 @@ function loadCountryData() {
 function renderCountryTemplate() {
   var flagTemplate = `<div class="flag tooltip-flag" style="top: {3}%;left: {4}%; width: {5}%; height: {6}%">
                         <a class="inner" title-flag="{1}" link-doc="{2}" href="{2}" target="_blank" style="height: 100%;display: block;">
-                          <div class="" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; 
+                          <div class="" style="background: url('./assets/images/FlagSVG/{0}.svg') no-repeat center; 
                                                     background-size: 100%;width: 100%;
                                                     height: 100%;">
                           </div>
@@ -167,7 +167,7 @@ function handleClickTitle(_this) {
 // Template danh sách cờ
 function listFlagTemplate(regionName) {
   var flagTemplate = `<a class="flag-link tooltip-flag" link-doc='{2}' href="{2}" target="_blank">
-                        <span class="flag inner" title-flag="{1}" style="background: url('./assets/images/Flag/{0}.svg') no-repeat center; background-size: 100%;">
+                        <span class="flag inner" title-flag="{1}" style="background: url('./assets/images/FlagSVG/{0}.svg') no-repeat center; background-size: 100%;">
                         </span>
                       </a>`;
   var flagHTML = "";
